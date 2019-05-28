@@ -87,7 +87,8 @@ path, g {
    stroke: inherit;
 }
 
-section {
+header, section {
+   position: relative;
    background-repeat: no-repeat;
    background-position: center;
    background-size: cover;
