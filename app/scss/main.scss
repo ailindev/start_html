@@ -87,6 +87,11 @@ path, g {
    stroke: inherit;
 }
 
+section {
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+}
 
 .wrapper {
    display: flex;
