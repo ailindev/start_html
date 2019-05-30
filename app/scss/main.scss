@@ -66,6 +66,11 @@ a {
    &:hover {
       text-decoration: none;
    }
+
+   &:active, &:focus {
+      border: none;
+      outline: none;
+   }
 }
 
 
