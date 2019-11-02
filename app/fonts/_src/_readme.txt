@@ -1,1 +1,1 @@
-Converter recommended: https://www.fontsquirrel.com/tools/webfont-generator
+Converter recommended: https://fontie.pixelsvsbytes.com/webfont-generator

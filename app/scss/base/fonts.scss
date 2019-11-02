@@ -8,17 +8,42 @@
 // 800 Extra Bold, Ultra Bold
 // 900 Black, Heavy
 
-@mixin font($f-name, $f-style, $f-weight, $f-url) {
-   @font-face {
-      font-family: $f-name;
-      font-style: $f-style;
-      font-weight: $f-weight;
-      src: url($f-url) format('woff2');
-   }
+@font-face {
+   font-family:'Roboto';
+   src: url('../../fonts/Roboto Bold.woff2') format('woff2'),
+   url('../../fonts/Roboto Bold.woff') format('woff');
+   font-weight: 700;
+   font-style: normal;
+   font-stretch: normal;
+   unicode-range: U+0020-2044;
 }
 
+@font-face {
+   font-family:'Roboto';
+   src: url('../../fonts/Roboto Bold Italic.woff2') format('woff2'),
+   url('../../fonts/Roboto Bold Italic.woff') format('woff');
+   font-weight: 700;
+   font-style: italic;
+   font-stretch: normal;
+   unicode-range: U+0020-2044;
+}
 
-@include font('Roboto', normal, 400, '../fonts/roboto-regular-webfont.woff2');
-@include font('Roboto', italic, 400, '../fonts/roboto-italic-webfont.woff2');
-@include font('Roboto', normal, 700, '../fonts/roboto-bold-webfont.woff2');
-@include font('Roboto', italic, 700, '../fonts/roboto-bolditalic-webfont.woff2');
+@font-face {
+   font-family:'Roboto';
+   src: url('../../fonts/Roboto Italic.woff2') format('woff2'),
+   url('../../fonts/Roboto Italic.woff') format('woff');
+   font-weight: 400;
+   font-style: italic;
+   font-stretch: normal;
+   unicode-range: U+0020-2044;
+}
+
+@font-face {
+   font-family:'Roboto';
+   src: url('../../fonts/Roboto.woff2') format('woff2'),
+   url('../../fonts/Roboto.woff') format('woff');
+   font-weight: 400;
+   font-style: normal;
+   font-stretch: normal;
+   unicode-range: U+0020-2044;
+}
