@@ -14,7 +14,7 @@ body {
    min-width: 320px;
    font-family: $default-font;
    overflow-x: hidden;
-   color: $text;
+   color: $text-dark;
 
    input, textarea {
       border: #666 1px solid;
@@ -69,6 +69,8 @@ a {
 
 
 button, figure {
+   border: none;
+   outline: none;
    &:focus, &:active {
       outline: none;
       border: none;
@@ -79,11 +81,6 @@ select {
    &:focus, &:active {
       outline: none;
    }
-}
-
-path, g {
-   fill: inherit;
-   stroke: inherit;
 }
 
 header, section {
