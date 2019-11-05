@@ -53,7 +53,7 @@ gulp.task('code', function () {
 });
 
 gulp.task('clean', function(){
-   return del(['app/css', 'app/img/**/*', '!app/img/_src', 'app/fonts/**/*', '!app/fonts/_src'], {force:true});
+   return del(['app/css', 'app/img/**/*', '!app/img/_src'], {force:true});
 });
 
 gulp.task('img:dev', function () {
