@@ -94,5 +94,5 @@ gulp.task('watch', function () {
    gulp.watch('app/img/_src/**/*', gulp.parallel('img:dev'));
 });
 
-gulp.task('default', gulp.parallel('clean', 'styles', 'scripts', 'img:dev', 'browser-sync', 'watch'));
+gulp.task('default', gulp.parallel('styles', 'scripts', 'img:dev', 'browser-sync', 'watch'));
 gulp.task('build', gulp.series('clean', 'styles', 'scripts', 'img:build'));
