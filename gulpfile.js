@@ -58,7 +58,7 @@ gulp.task('clean', function(){
 
 gulp.task('img:dev', function () {
    return gulp.src('app/img/_src/**/*.{png,jpg,webp,svg}')
-       .pipe(gulp.dest('app/img'))
+       .pipe(gulp.dest('app/img/dist'))
        .pipe(browserSync.reload({stream: true}));
 });
 
@@ -69,7 +69,7 @@ gulp.task('img:build', function () {
              quality: 80
           })
        ]))
-       .pipe(gulp.dest('app/img'));
+       .pipe(gulp.dest('app/img/dist'));
 });
 
 gulp.task('rsync', function () {
