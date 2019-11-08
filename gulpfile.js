@@ -7,10 +7,7 @@ let gulp = require('gulp'),
     rename = require('gulp-rename'),
     autoprefixer = require('gulp-autoprefixer'),
     notify = require('gulp-notify'),
-    rsync = require('gulp-rsync'),
-    imagemin = require('gulp-imagemin'),
-    mozjpeg = require('imagemin-mozjpeg'),
-    del = require('del');
+    rsync = require('gulp-rsync');
 
 gulp.task('browser-sync', function () {
    browserSync({
@@ -38,7 +35,7 @@ gulp.task('styles', function () {
 gulp.task('scripts', function () {
    return gulp.src([
       'node_modules/jquery/dist/jquery.min.js',
-      //'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+      'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
       'app/js/_custom.js', // Always at the end
    ])
        .pipe(concat('scripts.min.js'))
@@ -50,26 +47,6 @@ gulp.task('scripts', function () {
 gulp.task('code', function () {
    return gulp.src('app/*.html')
        .pipe(browserSync.reload({stream: true}))
-});
-
-gulp.task('clean', function(){
-   return del(['app/css', 'app/img/**/*', '!app/img/_src'], {force:true});
-});
-
-gulp.task('img:dev', function () {
-   return gulp.src('app/img/_src/**/*.{png,jpg,webp,svg}')
-       .pipe(gulp.dest('app/img/dist'))
-       .pipe(browserSync.reload({stream: true}));
-});
-
-gulp.task('img:build', function () {
-   return gulp.src('app/img/_src/**/*.{png,jpg,webp,svg}')
-       .pipe(imagemin([
-          mozjpeg({
-             quality: 80
-          })
-       ]))
-       .pipe(gulp.dest('app/img/dist'));
 });
 
 gulp.task('rsync', function () {
@@ -91,8 +68,6 @@ gulp.task('watch', function () {
    gulp.watch('app/scss/**/*.scss', gulp.parallel('styles'));
    gulp.watch(['libs/**/*.js', 'app/js/_custom.js'], gulp.parallel('scripts'));
    gulp.watch('app/*.html', gulp.parallel('code'));
-   gulp.watch('app/img/_src/**/*', gulp.parallel('img:dev'));
 });
 
-gulp.task('default', gulp.parallel('styles', 'scripts', 'img:dev', 'browser-sync', 'watch'));
-gulp.task('build', gulp.series('clean', 'styles', 'scripts', 'img:build'));
+gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
