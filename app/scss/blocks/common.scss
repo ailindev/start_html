@@ -1,4 +1,4 @@
-.btn {
+.button {
    display: inline-block;
    color: #fff;
    background-color: $accent;
@@ -6,11 +6,10 @@
    font-size: 13px;
    text-transform: uppercase;
    font-weight: 700;
-   letter-spacing: 3px;
    border-radius: 2px;
    text-align: center;
    position: relative;
-   transition: .1s ease;
+   transition: $trs;
    cursor: pointer;
    &::after {
       transition: background-color .2s ease;
