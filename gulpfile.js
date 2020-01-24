@@ -42,7 +42,7 @@ gulp.task('scripts', function () {
       './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
       './app/js/_custom.js', // Always at the end
    ])
-       .pipe(concat('./scripts.min.js'))
+       .pipe(concat('scripts.min.js'))
        // .pipe(uglify()) // Minify js (opt.)
        .pipe(gulp.dest('./app/js'))
        .pipe(browserSync.reload({stream: true}))
