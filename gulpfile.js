@@ -14,7 +14,7 @@ gulp.task('browser-sync', function () {
    browserSync({
       // proxy: "domain.local",
       server: {
-         baseDir: 'app'
+         baseDir: './app'
       },
       notify: false,
       ghostMode: false,
@@ -25,38 +25,38 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('styles', function () {
-   return gulp.src('app/scss/style.scss')
+   return gulp.src('./app/scss/style.scss')
        .pipe(sourcemaps.init())
        .pipe(sass({outputStyle: 'expanded'}).on("error", notify.onError()))
        .pipe(rename({suffix: '.min', prefix: ''}))
        .pipe(autoprefixer(['last 15 versions']))
        .pipe(cleancss({level: {1: {specialComments: 0}}})) // Opt., comment out when debugging
        .pipe(sourcemaps.write('./'))
-       .pipe(gulp.dest('app/css'))
+       .pipe(gulp.dest('./app/css'))
        .pipe(browserSync.stream())
 });
 
 gulp.task('scripts', function () {
    return gulp.src([
-      'node_modules/jquery/dist/jquery.min.js',
-      'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
-      'app/js/_custom.js', // Always at the end
+      './node_modules/jquery/dist/jquery.min.js',
+      './node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+      './app/js/_custom.js', // Always at the end
    ])
-       .pipe(concat('scripts.min.js'))
+       .pipe(concat('./scripts.min.js'))
        // .pipe(uglify()) // Minify js (opt.)
-       .pipe(gulp.dest('app/js'))
+       .pipe(gulp.dest('./app/js'))
        .pipe(browserSync.reload({stream: true}))
 });
 
 gulp.task('code', function () {
-   return gulp.src('app/*.html')
+   return gulp.src('./app/*.html')
        .pipe(browserSync.reload({stream: true}))
 });
 
 gulp.task('rsync', function () {
-   return gulp.src('app/**')
+   return gulp.src('./app/**')
        .pipe(rsync({
-          root: 'app/',
+          root: './app/',
           hostname: 'username@yousite.com',
           destination: 'yousite/public_html/',
           // include: ['*.htaccess'], // Includes files to deploy
@@ -69,9 +69,9 @@ gulp.task('rsync', function () {
 });
 
 gulp.task('watch', function () {
-   gulp.watch('app/scss/**/*.scss', gulp.parallel('styles'));
-   gulp.watch(['libs/**/*.js', 'app/js/_custom.js'], gulp.parallel('scripts'));
-   gulp.watch('app/*.html', gulp.parallel('code'));
+   gulp.watch('./app/scss/**/*.scss', gulp.parallel('styles'));
+   gulp.watch(['./app/libs/**/*.js', './app/js/_custom.js'], gulp.parallel('scripts'));
+   gulp.watch('./app/*.html', gulp.parallel('code'));
 });
 
 gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
