@@ -11,6 +11,7 @@
    position: relative;
    transition: $trs;
    cursor: pointer;
+
    &::after {
       transition: background-color .2s ease;
       position: absolute;
@@ -32,6 +33,7 @@
 
    &:hover {
       background-color: lighten($accent, 5%);
+
       &::after {
          opacity: .22;
       }
@@ -39,10 +41,18 @@
 
    &:active {
       background-color: darken($accent, 5%);
+
       &::after {
          opacity: .32;
       }
    }
+}
+
+.img-cover {
+   display: flex;
+   width: 100%;
+   height: 100% !important;
+   object-fit: cover;
 }
 
 
