@@ -49,7 +49,7 @@ gulp.task('scripts', function () {
 });
 
 gulp.task('code', function () {
-   return gulp.src('./app/*.html')
+   return gulp.src(['./app/*.html', './app/*.php'])
        .pipe(browserSync.reload({stream: true}))
 });
 
@@ -71,7 +71,7 @@ gulp.task('rsync', function () {
 gulp.task('watch', function () {
    gulp.watch('./app/scss/**/*.scss', gulp.parallel('styles'));
    gulp.watch(['./app/libs/**/*.js', './app/js/_custom.js'], gulp.parallel('scripts'));
-   gulp.watch('./app/*.html', gulp.parallel('code'));
+   gulp.watch(['./app/*.html', './app/*.php'], gulp.parallel('code'));
 });
 
 gulp.task('default', gulp.parallel('styles', 'scripts', 'browser-sync', 'watch'));
